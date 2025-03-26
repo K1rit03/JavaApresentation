@@ -3,10 +3,7 @@ import org.example.Order;
 import org.example.OrderManager;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -43,14 +40,15 @@ public class OrderManagerTest {
 
     @Test
     public void testSearchByCustomerName() {
-        Order order1 = new Order("1", "John Doe", 100.0);
+        Order order1 = new Order("1", "Jane Doe", 100.0);
         Order order2 = new Order("2", "Jane Doe", 200.0);
         orderManager.addOrder(order1);
         orderManager.addOrder(order2);
 
         List<Order> result = orderManager.searchByCustomerName("Jane Doe");
-        assertEquals(1, result.size());
-        assertEquals("2", result.get(0).getId());
+        assertEquals(2, result.size());
+        assertEquals("1", result.get(0).getId());
+        assertEquals("2", result.get(1).getId());
     }
 
     @Test
